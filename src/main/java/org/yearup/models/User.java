@@ -76,8 +76,7 @@ public class User {
       }
    }
 
-   public void addRole(String role)
-   {
+   public void addRole(String role) {
       String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
       this.authorities.add(new Authority(authority));
    }
@@ -110,12 +109,9 @@ public class User {
    }
 
    @JsonIgnore
-   public String getRole()
-   {
-      if(authorities.size() > 0)
-      {
-         for(Authority role: authorities)
-         {
+   public String getRole() {
+      if(authorities.size() > 0) {
+         for(Authority role: authorities) {
             return role.getName().toUpperCase();
          }
       }
