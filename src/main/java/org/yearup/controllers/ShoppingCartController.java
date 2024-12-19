@@ -37,16 +37,10 @@ public class ShoppingCartController {
         try {
             String userName = principal.getName();
             User user = userDao.getByUserName(userName);
-            if (user == null) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist...");
-            }
             int userId = user.getId();
-            ShoppingCart cart = shoppingCartDao.getByUserId(userId);
-            if (cart == null) {
-                cart = new ShoppingCart();
-            }
-            return cart;
+            return shoppingCartDao.getByUserId(userId);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Something went wrong...");
         }
     }
